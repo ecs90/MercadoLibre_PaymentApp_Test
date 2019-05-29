@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentMethodActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/montoIngresado_tv" />
+
+        <TextView
+            android:id="@+id/monto_mainActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editarMonto_btn"
+            android:onClick="editarMonto" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/medioPago_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medio_de_pago_tv"
+        android:layout_centerVertical="true" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/tarjeta_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/medioPago_tv"></android.support.v7.widget.AppCompatSpinner>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tarjeta_spinner"
+        android:layout_centerHorizontal="true"
+        android:text="@string/send_btn"
+        android:onClick="enviarTarjeta" />
+
+</RelativeLayout>
