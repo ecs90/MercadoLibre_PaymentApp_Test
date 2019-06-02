@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class PaymentMethodModel {
     @SerializedName("id")
     @Expose
-    public int id;
+    public String id;
 
     @SerializedName("name")
     @Expose
@@ -20,11 +20,11 @@ public class PaymentMethodModel {
     @Expose
     public String URLimage;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
