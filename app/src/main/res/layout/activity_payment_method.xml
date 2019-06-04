@@ -20,6 +20,7 @@
             android:id="@+id/monto_mainActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="10dp"
             android:layout_weight="1" />
 
         <Button
@@ -44,20 +45,10 @@
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/tarjeta_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/medioPago_tv"
-            android:layout_alignBottom="@+id/second_horizontal"
-
-            android:layout_weight="1" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tarjeta_spinner"
-            android:layout_centerHorizontal="true"
-            android:text="@string/filter_btn"
-            android:onClick="filterPaymentType" />
+            android:layout_below="@+id/medioPago_tv"
+            android:layout_alignBottom="@+id/second_horizontal" />
     </LinearLayout>
 
     <TextView
@@ -65,21 +56,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/medio_de_pago_tv"
-        android:layout_below="@+id/second_horizontal" />
+        android:layout_below="@+id/second_horizontal"
+        android:layout_marginTop="10dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/payment_recyclerview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/medioPago_tv" />
+        android:layout_below="@+id/medioPago_tv"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/send_btn"
-        android:layout_below="@+id/payment_recyclerview"
-        android:onClick="enviarTarjeta"
-        android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/payment_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medioPago_tv"
+            android:layout_weight="1" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="enviarTarjeta"
+                android:text="@string/send_btn"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
