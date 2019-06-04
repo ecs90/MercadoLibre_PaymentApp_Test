@@ -5,16 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
-    <ImageView
+    <RadioButton
+        android:id="@+id/recycler_radiobutton"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/recycler_imageview"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:scaleType="fitStart"
-        tools:srcCompat="@android:drawable/ic_btn_speak_now" />
+        android:paddingBottom="1dp"
+        android:scaleType="fitCenter"
+        tools:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:layout_weight="1" />
 
     <TextView
+        android:id="@+id/recycler_textview"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
         tools:text="soyla cerda"
-        android:layout_weight="1" />
+        android:layout_weight="100" />
 
 </LinearLayout>

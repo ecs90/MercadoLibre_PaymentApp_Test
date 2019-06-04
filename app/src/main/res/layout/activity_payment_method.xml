@@ -6,6 +6,7 @@
     tools:context=".PaymentMethodActivity">
 
     <LinearLayout
+        android:id="@+id/first_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -28,26 +29,57 @@
             android:onClick="editarMonto" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/second_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/first_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filterbytype_textview" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/tarjeta_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/medioPago_tv"
+            android:layout_alignBottom="@+id/second_horizontal"
+
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tarjeta_spinner"
+            android:layout_centerHorizontal="true"
+            android:text="@string/filter_btn"
+            android:onClick="filterPaymentType" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/medioPago_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/medio_de_pago_tv"
-        android:layout_centerVertical="true" />
+        android:layout_below="@+id/second_horizontal" />
 
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/tarjeta_spinner"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/payment_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/medioPago_tv"></android.support.v7.widget.AppCompatSpinner>
+        android:layout_below="@+id/medioPago_tv" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tarjeta_spinner"
-        android:layout_centerHorizontal="true"
         android:text="@string/send_btn"
-        android:onClick="enviarTarjeta" />
+        android:layout_below="@+id/payment_recyclerview"
+        android:onClick="enviarTarjeta"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

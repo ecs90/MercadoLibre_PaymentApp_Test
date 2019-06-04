@@ -6,4 +6,6 @@
     <string name="montoIngresado_tv">Monto ingresado:</string>
     <string name="editarMonto_btn">Editar</string>
     <string name="medio_de_pago_tv">Medio de pago:</string>
+    <string name="filter_btn">Filtrar</string>
+    <string name="filterbytype_textview">Filtrar por tipo:</string>
 </resources>

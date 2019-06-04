@@ -16,9 +16,9 @@ public class PaymentMethodModel {
     @Expose
     public String type_id;
 
-    @SerializedName("thumbnail")
+    @SerializedName("secure_thumbnail")
     @Expose
-    public String URLimage;
+    public String imageURL;
 
     public String getId() {
         return id;
@@ -44,11 +44,11 @@ public class PaymentMethodModel {
         this.type_id = type_id;
     }
 
-    public String getURLimage() {
-        return URLimage;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setURLimage(String URLimage) {
-        this.URLimage = URLimage;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
