@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ public class PaymentMethodActivity extends AppCompatActivity implements
     private static final String PUBLIC_KEY = "444a9ef5-8a6b-429f-abdf-587639155d88";
 
     private TextView mMontoIngresado;
+    private String mFiltroRetrofit;
+    private RecyclerView mRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,83 @@ public class PaymentMethodActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         String monto = intent.getStringExtra(getString(R.string.monto_key_putExtra));
         mMontoIngresado.setText(monto + "$");
+        mFiltroRetrofit = "Ninguno";
 
-        final RecyclerView recycler = (RecyclerView) findViewById(R.id.payment_recyclerview);
+        //Filter spinner code
+        Spinner spinner = findViewById(R.id.tarjeta_spinner);
+        if (spinner != null) {
+            spinner.setOnItemSelectedListener(this);
+        }
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.paymenttype_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
+        if (spinner != null) {
+            spinner.setAdapter(adapter);
+        }
 
+        //RecyclerView code
+        mRecycler = (RecyclerView) findViewById(R.id.payment_recyclerview);
+
+        retrofitResponseHandler(mRecycler);
+
+    }
+
+    public void editarMonto(View view) {
+        Intent intentBack = new Intent(PaymentMethodActivity.this, MainActivity.class);
+        intentBack.putExtra(getString(R.string.monto_key_putExtra), mMontoIngresado.getText().toString());
+        startActivity(intentBack);
+    }
+
+    public void enviarTarjeta(View view) {
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String spinnerLabel = parent.getItemAtPosition(position).toString();
+
+        if (spinnerLabel == parent.getItemAtPosition(0).toString()) {
+            mFiltroRetrofit = spinnerLabel;
+        } else if (spinnerLabel == parent.getItemAtPosition(1).toString()) {
+            mFiltroRetrofit = "debit_card";
+        } else if (spinnerLabel == parent.getItemAtPosition(2).toString()) {
+            mFiltroRetrofit = "credit_card";
+        } else if (spinnerLabel == parent.getItemAtPosition(3).toString()) {
+            mFiltroRetrofit = "ticket";
+        }
+
+        retrofitResponseHandler(mRecycler);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    public void filterPaymentType(View view) {
+    }
+
+    public List<PaymentMethodModel> retrofitPaymentMethodHelper(Response<List<PaymentMethodModel>> response) {
+        List<PaymentMethodModel> lista = response.body();
+        List<PaymentMethodModel> reemplazo = new ArrayList<PaymentMethodModel>();
+
+        PaymentMethodModel helper;
+        String type = "Ninguno";
+        if (!mFiltroRetrofit.equals(type)) {
+            for (int i = 0; i < lista.size(); i++) {
+                helper = lista.get(i);
+                type = helper.getType_id();
+                if (type.equals(mFiltroRetrofit)) {
+                    reemplazo.add(helper);
+                }
+            }
+        } else {
+            reemplazo.addAll(0, lista);
+        }
+
+        return reemplazo;
+    }
+
+    public void retrofitResponseHandler(final RecyclerView recycler) {
         /*Create handle for the RetrofitInstance interface*/
         RetrofitInterface service = RetrofitClientInstance.getRetrofitInstance()
                 .create(RetrofitInterface.class);
@@ -61,44 +139,5 @@ public class PaymentMethodActivity extends AppCompatActivity implements
                 startActivity(intentBack);
             }
         });
-
-    }
-
-    public void editarMonto(View view) {
-        Intent intentBack = new Intent(PaymentMethodActivity.this, MainActivity.class);
-        intentBack.putExtra(getString(R.string.monto_key_putExtra), mMontoIngresado.getText().toString());
-        startActivity(intentBack);
-    }
-
-    public void enviarTarjeta(View view) {
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-    public void filterPaymentType(View view) {
-    }
-
-    public List<PaymentMethodModel> retrofitPaymentMethodHelper(Response<List<PaymentMethodModel>> response) {
-        List<PaymentMethodModel> lista = response.body();
-        List<PaymentMethodModel> reemplazo = new ArrayList<PaymentMethodModel>();
-
-        PaymentMethodModel helper;
-        String creditCard;
-        for (int i = 0; i < lista.size(); i++) {
-            helper = lista.get(i);
-            creditCard = helper.getType_id();
-            if (creditCard.equals("credit_card")) {
-                reemplazo.add(helper);
-            }
-        }
-
-        return reemplazo;
     }
 }

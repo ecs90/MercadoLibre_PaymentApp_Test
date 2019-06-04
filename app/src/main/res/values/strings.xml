@@ -8,4 +8,10 @@
     <string name="medio_de_pago_tv">Medio de pago:</string>
     <string name="filter_btn">Filtrar</string>
     <string name="filterbytype_textview">Filtrar por tipo:</string>
+    <string-array name="paymenttype_array">
+        <item>Ninguno</item>
+        <item>Debito</item>
+        <item>Credito</item>
+        <item>Ticket</item>
+    </string-array>
 </resources>
