@@ -5,30 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".PaymentMethodActivity">
 
-    <LinearLayout
-        android:id="@+id/first_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/montoIngresado_tv" />
-
-        <TextView
-            android:id="@+id/monto_mainActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/editarMonto_btn"
-            android:onClick="editarMonto" />
-    </LinearLayout>
+    <include layout="@layout/monto_ingresado_linear" />
 
     <LinearLayout
         android:id="@+id/second_horizontal"
@@ -59,30 +36,10 @@
         android:layout_below="@+id/second_horizontal"
         android:layout_marginTop="10dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <include
+        layout="@layout/item_recycler_button"
         android:layout_below="@+id/medioPago_tv"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/payment_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/medioPago_tv"
-            android:layout_weight="1" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="enviarTarjeta"
-                android:text="@string/send_btn"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
 </RelativeLayout>

@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMontoIngresado = findViewById(R.id.montoEnviado_editText);
 
         Intent i = getIntent();
         String monto = i.getStringExtra(getString(R.string.monto_key_putExtra));

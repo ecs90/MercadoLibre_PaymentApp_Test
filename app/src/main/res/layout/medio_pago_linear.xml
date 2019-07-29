@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/medio_de_pago_tv" />
+
+    <ImageView
+        android:id="@+id/image_from_payment"
+        android:layout_width="50dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/pay_plus_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/editarMedio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editarMonto_btn" />
+
+</LinearLayout>

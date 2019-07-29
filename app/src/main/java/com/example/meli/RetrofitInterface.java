@@ -11,4 +11,13 @@ public interface RetrofitInterface {
     //@Path allows to search for specific fields inside the URL
     @GET("payment_methods")
     Call<List<PaymentMethodModel>> getSpecificPaymentMethods(@Query("public_key") String PUBLIC_KEY);
+
+    @GET("payment_methods/card_issuers")
+    Call<List<BankModel>> getBanksByPaymentMethod(@Query("public_key") String PUBLIC_KEY,
+                                                  @Query("payment_method_id") String payment_id);
+
+    @GET("payment_methods/installments")
+    Call<List<InstallmentsModel>> getInstallments(@Query("public_key") String PUBLIC_KEY,
+                                                  @Query("amount") float amount,
+                                                  @Query("payment_method") String payment_method);
 }

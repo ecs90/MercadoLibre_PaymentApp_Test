@@ -3,11 +3,21 @@
     <string name="ingrese_monto_txtImpLO">Ingrese un monto:</string>
     <string name="send_btn">Enviar</string>
     <string name="monto_key_putExtra">montoIngresado_eT</string>
+    <string name="cardType_key_putExtra">tipoTarjetaIngresada_eT</string>
+    <string name="card_key_putExtra">tarjetaIngresada_eT</string>
+    <string name="image_key_putExtra">imagenIngresada_eT</string>
+    <string name="id_payment_key_putExtra">idIngresada_eT</string>
     <string name="montoIngresado_tv">Monto ingresado:</string>
     <string name="editarMonto_btn">Editar</string>
     <string name="medio_de_pago_tv">Medio de pago:</string>
     <string name="filter_btn">Filtrar</string>
     <string name="filterbytype_textview">Filtrar por tipo:</string>
+    <string name="bank_select">Seleccione el banco:</string>
+    <string name="id_tipo_key">idPagoIngresadoKey</string>
+    <string name="imagen_tipo_key">imagenTipoKey</string>
+    <string name="name_tipo_key">nombreTipoKey</string>
+    <string name="banco_elegido">Banco elegido:</string>
+    <string name="cantidad_de_cuotas">Cantidad de cuotas:</string>
     <string-array name="paymenttype_array">
         <item>Ninguno</item>
         <item>Debito</item>

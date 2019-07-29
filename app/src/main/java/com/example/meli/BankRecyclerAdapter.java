@@ -14,10 +14,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+public class BankRecyclerAdapter extends RecyclerView.Adapter<BankRecyclerAdapter.RecyclerViewHolder> {
     private int mSelectedItem = -1;
     private Context mContext;
-    private List<PaymentMethodModel> list;
+    private List<BankModel> list;
 
     class RecyclerViewHolder extends RecyclerView.ViewHolder {
         public RadioButton mRadio;
@@ -39,25 +39,33 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             itemView.setOnClickListener(clickListener);
             mRadio.setOnClickListener(clickListener);
         }
+
+        public TextView getmText() {
+            return mText;
+        }
+
+        public ImageView getmImage() {
+            return mImage;
+        }
     }
 
-    public RecyclerAdapter(Context mContext, List<PaymentMethodModel> list) {
+    public BankRecyclerAdapter(Context mContext, List<BankModel> list) {
         this.mContext = mContext;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public BankRecyclerAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         final View row = inflater.inflate(R.layout.item_imagetext, viewGroup, false);
 
-        RecyclerViewHolder vh = new RecyclerViewHolder(row);
+        BankRecyclerAdapter.RecyclerViewHolder vh = new BankRecyclerAdapter.RecyclerViewHolder(row);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull BankRecyclerAdapter.RecyclerViewHolder viewHolder, int i) {
         viewHolder.mText.setText(list.get(i).getName());
         Picasso.with(mContext)
                 .load(list.get(i).getImageURL())
@@ -68,5 +76,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public BankModel getSelected() {
+        return this.list.get(mSelectedItem);
     }
 }
