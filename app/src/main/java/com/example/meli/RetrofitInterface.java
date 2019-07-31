@@ -18,6 +18,6 @@ public interface RetrofitInterface {
 
     @GET("payment_methods/installments")
     Call<List<InstallmentsModel>> getInstallments(@Query("public_key") String PUBLIC_KEY,
-                                                  @Query("amount") float amount,
+                                                  @Query("amount") String amount,
                                                   @Query("payment_method") String payment_method);
 }

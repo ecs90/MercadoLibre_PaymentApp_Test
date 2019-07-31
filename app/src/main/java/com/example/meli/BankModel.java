@@ -16,6 +16,12 @@ public class BankModel {
     @Expose
     public String imageURL;
 
+    public BankModel(String id, String name, String imageURL) {
+        this.id = id;
+        this.name = name;
+        this.imageURL = imageURL;
+    }
+
     public String getId() {
         return id;
     }

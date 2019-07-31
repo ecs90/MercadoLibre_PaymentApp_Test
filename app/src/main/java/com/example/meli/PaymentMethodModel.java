@@ -20,6 +20,13 @@ public class PaymentMethodModel {
     @Expose
     public String imageURL;
 
+    public PaymentMethodModel(String id, String name, String type_id, String imageURL) {
+        this.id = id;
+        this.name = name;
+        this.type_id = type_id;
+        this.imageURL = imageURL;
+    }
+
     public String getId() {
         return id;
     }

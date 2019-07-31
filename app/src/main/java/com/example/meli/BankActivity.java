@@ -99,9 +99,9 @@ public class BankActivity extends AppCompatActivity {
                 intent.putExtra(getString(R.string.cardType_key_putExtra), tipo);
                 intent.putExtra(getString(R.string.card_key_putExtra), nombre);
                 intent.putExtra(getString(R.string.image_key_putExtra), imagen);
-                intent.putExtra(getString(R.string.id_tipo_key), toIntent.getId());
-                intent.putExtra(getString(R.string.imagen_tipo_key), toIntent.getImageURL());
-                intent.putExtra(getString(R.string.name_tipo_key), toIntent.getName());
+                intent.putExtra(getString(R.string.id_bank_key), toIntent.getId());
+                intent.putExtra(getString(R.string.imagen_bank_key), toIntent.getImageURL());
+                intent.putExtra(getString(R.string.name_bank_key), toIntent.getName());
                 startActivity(intent);
             }
         });
